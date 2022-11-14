@@ -86,22 +86,22 @@ iface eth0 inet static
 ## NOMOR 1
 Loid bersama Franky berencana membuat peta tersebut dengan kriteria WISE sebagai DNS Server, Westalis sebagai DHCP Server, Berlint sebagai Proxy Server<br>
 
-1. <code>1.sh</code> di WISE<br>
+### <code>1.sh</code> di WISE
 WISE akan dijadikan sebagai DNS Server, maka di Install bind9, lalu start.<br>
 ![image](https://user-images.githubusercontent.com/94664966/201514334-2476fead-4039-4fc0-b2d3-8416c0c0f0ce.png)<br>
 
-2. <code>1.sh</code> di Westalis<br>
+### <code>1.sh</code> di Westalis
 Westalis akan dijadikan sebagai DHCP Server, maka install <code>isc-dhcp-server</code>, lalu cek versinya.<br>
 ![image](https://user-images.githubusercontent.com/94664966/201514515-c3c7e4f1-de29-4097-9949-7d94396d6622.png)<br>
 
-3. <code>1.sh</code> di Berlint<br>
+### <code>1.sh</code> di Berlint
 Berlint akan dijadikan sebagai Proxy Server, maka install squid, lalu start.<br>
 ![image](https://user-images.githubusercontent.com/94664966/201514586-7717b9b5-edc2-4166-8387-f541fa2f890e.png)<br>
 
 ## NOMOR 2
 Ostania sebagai DHCP Relay<br>
 
-<code>2.sh</code> di Ostania<br>
+### <code>2.sh</code> di Ostania
 Install <code>isc-dhcp-relay</code>, kemudian atur server dan interfacenya seperti gambar berikut<br>
 ![image](https://user-images.githubusercontent.com/94664966/201514654-2056b181-cdb6-4ed0-a2ab-bd706e1b67f5.png)<br>
 
@@ -109,23 +109,23 @@ Install <code>isc-dhcp-relay</code>, kemudian atur server dan interfacenya seper
 Semua client yang ada HARUS menggunakan konfigurasi IP dari DHCP Server.<br>
 Client yang melalui Switch1 mendapatkan range IP dari [prefix IP].1.50 - [prefix IP].1.88 dan [prefix IP].1.120 - [prefix IP].1.155<br>
 
-<strong>1. Westalis</strong><br>
+### Westalis
 Karena Switch1, maka subnet <code>10.28.1.0</code>.<br>
 Kemudian masukkan range IP sesuai soal.<br>
 Option routers diisi <code>10.28.1.1</code>.<br>
 Restart dhcp server, lalu cek status.<br><br>
 ![image](https://user-images.githubusercontent.com/94664966/201514815-b5d78420-f22e-4b29-8304-dcfd36686882.png)<br>
 
-<strong>2. SSS</strong><br>
+### SSS
 ![image](https://user-images.githubusercontent.com/94664966/201514885-5e41bfa4-b098-40bc-aa32-ec6dfdcae3ea.png)
 
-<strong>3. Garden</strong><br>
+###Garden
 ![image](https://user-images.githubusercontent.com/94664966/201514929-98f2bb86-edbe-4a72-9848-7654d942e596.png)
 
 ## NOMOR 4
 Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.10 - [prefix IP].3.30 dan [prefix IP].3.60 - [prefix IP].3.85<br><br>
 
-<strong>1. Westalis</strong><br>
+### 1. Westalis<br>
 Karena Switch3, maka subnet <code>10.28.3.0</code>.<br>
 Kemudian masukkan range IP sesuai soal.<br>
 Option routers diisi <code>10.28.3.1</code>.<br>
@@ -232,3 +232,5 @@ date -s "7 NOV 2022 13:30:00"
 lynx google.com
 ```
 
+## NOMOR 8b (Proxy)
+### WISE
