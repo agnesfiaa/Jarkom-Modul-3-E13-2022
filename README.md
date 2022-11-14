@@ -100,51 +100,57 @@ Berlint akan dijadikan sebagai Proxy Server, maka install squid, lalu start.<br>
 
 ## NOMOR 2
 Ostania sebagai DHCP Relay<br>
-<code>bash 2.sh</code> di Ostania
-![image](https://user-images.githubusercontent.com/94664966/201514654-2056b181-cdb6-4ed0-a2ab-bd706e1b67f5.png)
+
+<code>2.sh</code> di Ostania<br>
+Install <code>isc-dhcp-relay</code>, kemudian atur server dan interfacenya seperti gambar berikut<br>
+![image](https://user-images.githubusercontent.com/94664966/201514654-2056b181-cdb6-4ed0-a2ab-bd706e1b67f5.png)<br>
 
 ## NOMOR 3
 Semua client yang ada HARUS menggunakan konfigurasi IP dari DHCP Server.<br>
 Client yang melalui Switch1 mendapatkan range IP dari [prefix IP].1.50 - [prefix IP].1.88 dan [prefix IP].1.120 - [prefix IP].1.155<br>
-1. Westalis
 
-![image](https://user-images.githubusercontent.com/94664966/201514815-b5d78420-f22e-4b29-8304-dcfd36686882.png)
+<strong>1. Westalis</strong><br>
+Karena Switch1, maka subnet <code>10.28.1.0</code>.<br>
+Kemudian masukkan range IP sesuai soal.<br>
+Option routers diisi <code>10.28.1.1</code>.<br>
+Restart dhcp server, lalu cek status.<br><br>
+![image](https://user-images.githubusercontent.com/94664966/201514815-b5d78420-f22e-4b29-8304-dcfd36686882.png)<br>
 
-2. SSS
-
+<strong>2. SSS</strong><br>
 ![image](https://user-images.githubusercontent.com/94664966/201514885-5e41bfa4-b098-40bc-aa32-ec6dfdcae3ea.png)
 
-3. Garden
-
+<strong>3. Garden</strong><br>
 ![image](https://user-images.githubusercontent.com/94664966/201514929-98f2bb86-edbe-4a72-9848-7654d942e596.png)
 
 ## NOMOR 4
-Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.10 - [prefix IP].3.30 dan [prefix IP].3.60 - [prefix IP].3.85<br>
-RUN 
-1. Westalis
+Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.10 - [prefix IP].3.30 dan [prefix IP].3.60 - [prefix IP].3.85<br><br>
 
+<strong>1. Westalis</strong><br>
+Karena Switch3, maka subnet <code>10.28.3.0</code>.<br>
+Kemudian masukkan range IP sesuai soal.<br>
+Option routers diisi <code>10.28.3.1</code>.<br>
+Restart dhcp server, lalu cek status.<br><br>
 ![image](https://user-images.githubusercontent.com/94664966/201515332-78af5089-4bf3-4dd0-9ae5-f1d4310c7cc7.png)
 ![image](https://user-images.githubusercontent.com/94664966/201515369-d9c60a43-3cad-4393-9753-352426c01676.png)
 
-2. Eden
-
+<strong>2. Eden</strong><br>
 ![image](https://user-images.githubusercontent.com/94664966/201515416-1c4e0068-3120-4bd5-b38f-cf113bb403c5.png)
 
-3. NewstoneCastle
-
+<strong>3. NewstoneCastle</strong><br>
 ![image](https://user-images.githubusercontent.com/94664966/201515442-29e07b60-0449-4a14-aab7-957083d301e9.png)
 
-4. KemonoPark
-
+<strong>4. KemonoPark</strong><br>
 ![image](https://user-images.githubusercontent.com/94664966/201515517-f75bc6b5-4451-4a76-ad1b-5f921351380d.png)
 
 ## NOMOR 5
-Client mendapatkan DNS dari WISE dan client dapat terhubung dengan internet melalui DNS tersebut.
-1. Wise
+Client mendapatkan DNS dari WISE dan client dapat terhubung dengan internet melalui DNS tersebut.<br>
 
+<strong>1. WISE</strong><br>
+Tulis directory `/var/cache/bind`<br>
+Atur forwarders ke nameserver, yaitu `192.168.122.1`<br>
 ![image](https://user-images.githubusercontent.com/94664966/201515567-77dead54-b4c9-46c3-856f-aedca021d418.png)
 
-2. Westalis
+<strong>2. Westalis</strong>
 
 ![image](https://user-images.githubusercontent.com/94664966/201515620-d57462b1-cd2d-4af4-9017-46a6b36b17cc.png)
 
