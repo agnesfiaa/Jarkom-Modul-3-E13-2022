@@ -199,4 +199,36 @@ hasil bash
   Restart Node Eden untuk melihat IP terbaru 
   ![image](https://user-images.githubusercontent.com/94664966/201516417-ef64cd4c-aa99-4682-b29a-b96b7a41327c.png)
 
+## NOMOR 8a (Proxy)
+
+### Berlint
+```
+echo '
+acl WORKING time MTWHF 08:00-17:00
+
+' > /etc/squid/acl.conf 
+
+echo '
+include /etc/squid/acl.conf
+
+http_port 8080
+http_access deny WORKING
+http_access allow all 
+visible_hostname Berlint
+
+' > /etc/squid/squid.conf
+
+service squid restart
+```
+
+### SSS
+```
+apt-get update
+apt-get install lynx -y
+
+export http_proxy="http://10.28.2.3:8080"
+
+date -s "7 NOV 2022 13:30:00"
+lynx google.com
+```
 
