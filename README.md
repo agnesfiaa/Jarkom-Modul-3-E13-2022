@@ -125,7 +125,7 @@ Restart dhcp server, lalu cek status.<br><br>
 ## NOMOR 4
 Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.10 - [prefix IP].3.30 dan [prefix IP].3.60 - [prefix IP].3.85<br><br>
 
-### 1. Westalis<br>
+### Westalis
 Karena Switch3, maka subnet <code>10.28.3.0</code>.<br>
 Kemudian masukkan range IP sesuai soal.<br>
 Option routers diisi <code>10.28.3.1</code>.<br>
@@ -133,32 +133,32 @@ Restart dhcp server, lalu cek status.<br><br>
 ![image](https://user-images.githubusercontent.com/94664966/201515332-78af5089-4bf3-4dd0-9ae5-f1d4310c7cc7.png)
 ![image](https://user-images.githubusercontent.com/94664966/201515369-d9c60a43-3cad-4393-9753-352426c01676.png)
 
-<strong>2. Eden</strong><br>
+### Eden
 ![image](https://user-images.githubusercontent.com/94664966/201515416-1c4e0068-3120-4bd5-b38f-cf113bb403c5.png)
 
-<strong>3. NewstoneCastle</strong><br>
+### NewstoneCastle
 ![image](https://user-images.githubusercontent.com/94664966/201515442-29e07b60-0449-4a14-aab7-957083d301e9.png)
 
-<strong>4. KemonoPark</strong><br>
+### KemonoPark
 ![image](https://user-images.githubusercontent.com/94664966/201515517-f75bc6b5-4451-4a76-ad1b-5f921351380d.png)
 
 ## NOMOR 5
 Client mendapatkan DNS dari WISE dan client dapat terhubung dengan internet melalui DNS tersebut.<br>
 
-<strong>1. WISE</strong><br>
+### WISE
 Tulis directory `/var/cache/bind`<br>
 Atur forwarders ke nameserver, yaitu `192.168.122.1`<br>
 ![image](https://user-images.githubusercontent.com/94664966/201515567-77dead54-b4c9-46c3-856f-aedca021d418.png)
 
-<strong>2. Westalis</strong>
+### Westalis
 
 ![image](https://user-images.githubusercontent.com/94664966/201515620-d57462b1-cd2d-4af4-9017-46a6b36b17cc.png)
 
-3. Ostania
+### Ostania
 
 ![image](https://user-images.githubusercontent.com/94664966/201515672-736bc2a9-2cef-4468-b35d-304a7c56b980.png)
 
-4. SSS, Garden, Eden, Newstone, KemonoPrak
+### SSS, Garden, Eden, Newstone, KemonoPrak
 
 ![image](https://user-images.githubusercontent.com/94664966/201515759-9eb964bc-0644-4048-9d1a-1d1878438c72.png)
 
@@ -168,14 +168,16 @@ hasil bash
 
 ## NOMOR 6
 Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch1 selama 5 menit sedangkan pada client yang melalui Switch3 selama 10 menit. Dengan waktu maksimal yang dialokasikan untuk peminjaman alamat IP selama 115 menit.
-1. Westalis
+
+### Westalis
 
 ![image](https://user-images.githubusercontent.com/94664966/201515968-a8b0f118-8395-47f0-9e26-17cccdb23ccb.png)
 ![image](https://user-images.githubusercontent.com/94664966/201515993-8565bed2-7470-4164-ab77-ea019758879c.png)
 
 ## NOMOR 7
 Loid dan Franky berencana menjadikan Eden sebagai server untuk pertukaran informasi dengan alamat IP yang tetap dengan IP [prefix IP].3.13
-1. Eden
+
+### Eden
 
 ![image](https://user-images.githubusercontent.com/94664966/201516050-88bbb142-a7a7-455e-b468-cdcaba6503cc.png)
 
@@ -183,16 +185,16 @@ hasil bash
 
 ![image](https://user-images.githubusercontent.com/94664966/201516119-d01c9444-5792-4527-ace8-7b5a8f70973e.png)
 
-2. Westalis
+### Westalis
 
 ![image](https://user-images.githubusercontent.com/94664966/201516239-317a788a-5b74-4fe2-ab3c-73abf1f23932.png)
 ![image](https://user-images.githubusercontent.com/94664966/201516273-b35cdceb-1963-4ee3-a41c-0cc75b77ec12.png)
 
-3. Ostania
+### Ostania
 
 ![image](https://user-images.githubusercontent.com/94664966/201516316-f053e818-09a3-41e9-8073-522dce2c6896.png)
 
-4. Eden
+### Eden
 
 ![image](https://user-images.githubusercontent.com/94664966/201516365-e2f81ad0-f2eb-41b2-9659-16cca1f797f5.png)
 
