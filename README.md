@@ -200,6 +200,7 @@ hasil bash
   ![image](https://user-images.githubusercontent.com/94664966/201516417-ef64cd4c-aa99-4682-b29a-b96b7a41327c.png)
 
 ## NOMOR 8a (Proxy)
+Client hanya dapat mengakses internet diluar (selain) hari & jam kerja (senin-jumat 08.00 - 17.00) dan hari libur (dapat mengakses 24 jam penuh)
 
 ### Berlint
 ```
@@ -232,5 +233,230 @@ date -s "7 NOV 2022 13:30:00"
 lynx google.com
 ```
 
+### Garden
+```
+apt-get update
+apt-get install lynx -y
+
+export http_proxy="http://10.28.2.3:8080"
+
+date -s "7 NOV 2022 13:30:00"
+lynx google.com
+```
+
 ## NOMOR 8b (Proxy)
+Adapun pada hari dan jam kerja sesuai nomor (1), client hanya dapat mengakses domain loid-work.com dan franky-work.com (IP tujuan domain dibebaskan)
+
 ### WISE
+```
+echo '
+zone "loid-work.com" {
+        type master;
+        file "/etc/bind/jarkom/loid-work.com";
+};
+zone "franky-work.com" {
+        type master;
+        file "/etc/bind/jarkom/franky-work.com";
+};
+' > /etc/bind/named.conf.local
+
+mkdir /etc/bind/jarkom
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     loid-work.com. root.loid-work.com. (
+                     2022110901         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      loid-work.com.
+@       IN      A       10.28.2.2
+' > /etc/bind/jarkom/loid-work.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     franky-work.com. root.franky-work.com. (
+                     2022110902         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      franky-work.com.
+@       IN      A       10.28.2.2
+' > /etc/bind/jarkom/franky-work.com
+
+service bind9 restart
+```
+
+### Berlint
+```
+echo '
+loid-work.com
+franky-work.com
+' > /etc/squid/work-sites.acl
+
+echo '
+include /etc/squid/acl.conf
+
+http_port 8080
+visible_hostname Berlint
+
+acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
+http_access allow WORKSITES
+http_access deny WORKING
+http_access allow all
+
+' > /etc/squid/squid.conf
+
+service squid restart
+```
+
+### SSS
+```
+export http_proxy="http://10.28.2.3:8080"
+
+date -s "7 NOV 2022 13:30:00"
+
+lynx franky-work.com
+lynx loid-work.com
+lynx google.com
+```
+
+## NOMOR 8C (Proxy)
+Saat akses internet dibuka, client dilarang untuk mengakses web tanpa HTTPS. (Contoh web HTTP: http://example.com)
+
+### Berlint
+```
+echo '
+include /etc/squid/acl.conf
+
+http_port 8080
+visible_hostname Berlint
+
+acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
+http_access allow WORKSITES
+http_access deny WORKING
+http_access deny all
+
+
+' > /etc/squid/squid.conf
+
+service squid restart
+```
+
+### SSS
+```
+export http_proxy="http://10.28.2.3:8080"
+
+date -s "7 NOV 2022 18:30:00"
+
+lynx http://www.example.com
+lynx https://www.example.com
+```
+
+## NOMOR 8d (Proxy)
+Agar menghemat penggunaan, akses internet dibatasi dengan kecepatan maksimum 128 Kbps pada setiap host (Kbps = kilobit per second; lakukan pengecekan pada tiap host, ketika 2 host akses internet pada saat bersamaan, keduanya mendapatkan speed maksimal yaitu 128 Kbps)
+
+### Berlint
+```
+echo '
+include /etc/squid/acl.conf
+
+http_port 8080
+visible_hostname Berlint
+
+acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
+http_access allow WORKSITES
+http_access deny WORKING
+http_access allow all
+
+delay_pools 1
+delay_class 1 2 
+delay_access 1 allow all
+delay_parameters 1 none 16000/32000
+' > /etc/squid/squid.conf
+
+service squid restart
+```
+
+### SSS
+```
+unset http_proxy
+
+apt-get install speedtest-cli -y
+
+export PYTHONHTTPSVERIFY=0
+export http_proxy="http://10.28.2.3:8080"
+
+date -s "7 NOV 2022 18:30:00"
+speedtest
+```
+
+### Garden
+```
+unset http_proxy
+
+apt-get install speedtest-cli -y
+
+export PYTHONHTTPSVERIFY=0
+export http_proxy="http://10.28.2.3:8080"
+
+date -s "7 NOV 2022 18:30:00"
+speedtest
+```
+
+## NOMOR 8E (Proxy)
+
+### Berlint
+```
+echo '
+include /etc/squid/acl.conf
+
+http_port 8080
+visible_hostname Berlint
+
+acl WORKSITES dstdomain "/etc/squid/work-sites.acl"
+http_access allow WORKSITES
+http_access deny WORKING
+http_access allow all
+
+acl OPEN_TIME time MTWHF
+delay_pools 1
+delay_class 1 2
+delay_access 1 allow !OPEN_TIME
+delay_parameters 1 none 16000/32000
+' > /etc/squid/squid.conf
+
+service squid restart
+```
+
+### SSS
+```
+unset http_proxy
+
+export PYTHONHTTPSVERIFY=0
+export http_proxy="http://10.28.2.3:8080"
+
+date -s "6 NOV 2022 18:30:00"
+speedtest
+```
+
+### Garden
+```
+unset http_proxy
+
+export PYTHONHTTPSVERIFY=0
+export http_proxy="http://10.28.2.3:8080"
+
+date -s "7 NOV 2022 13:30:00"
+speedtest
+```
