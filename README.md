@@ -85,13 +85,18 @@ iface eth0 inet static
 ```
 ## NOMOR 1
 Loid bersama Franky berencana membuat peta tersebut dengan kriteria WISE sebagai DNS Server, Westalis sebagai DHCP Server, Berlint sebagai Proxy Server<br>
-1. <code>bash 1.sh</code> di WISE
-![image](https://user-images.githubusercontent.com/94664966/201514334-2476fead-4039-4fc0-b2d3-8416c0c0f0ce.png)
-2. <code>bash 1.sh</code> di Westalis
-![image](https://user-images.githubusercontent.com/94664966/201514515-c3c7e4f1-de29-4097-9949-7d94396d6622.png)
-3. <code>bash 1.sh</code> di Berlint
-![image](https://user-images.githubusercontent.com/94664966/201514586-7717b9b5-edc2-4166-8387-f541fa2f890e.png)
 
+1. <code>1.sh</code> di WISE<br>
+WISE akan dijadikan sebagai DNS Server, maka di Install bind9, lalu start.<br>
+![image](https://user-images.githubusercontent.com/94664966/201514334-2476fead-4039-4fc0-b2d3-8416c0c0f0ce.png)<br>
+
+2. <code>1.sh</code> di Westalis<br>
+Westalis akan dijadikan sebagai DHCP Server, maka install <code>isc-dhcp-server</code>, lalu cek versinya.<br>
+![image](https://user-images.githubusercontent.com/94664966/201514515-c3c7e4f1-de29-4097-9949-7d94396d6622.png)<br>
+
+3. <code>1.sh</code> di Berlint<br>
+Berlint akan dijadikan sebagai Proxy Server, maka install squid, lalu start.<br>
+![image](https://user-images.githubusercontent.com/94664966/201514586-7717b9b5-edc2-4166-8387-f541fa2f890e.png)<br>
 
 ## NOMOR 2
 Ostania sebagai DHCP Relay<br>
