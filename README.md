@@ -43,7 +43,7 @@ iface eth0 inet static
   netmask 255.255.255.0
   gateway 10.28.1.1
 ```
-### Wise
+### WISE
 ```
 auto eth0
 iface eth0 inet static
@@ -119,7 +119,7 @@ Restart dhcp server, lalu cek status.<br><br>
 ### SSS
 ![image](https://user-images.githubusercontent.com/94664966/201514885-5e41bfa4-b098-40bc-aa32-ec6dfdcae3ea.png)
 
-###Garden
+### Garden
 ![image](https://user-images.githubusercontent.com/94664966/201514929-98f2bb86-edbe-4a72-9848-7654d942e596.png)
 
 ## NOMOR 4
